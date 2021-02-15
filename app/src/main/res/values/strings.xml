@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">TheMealDB</string>
+    <string name="image_description">Image Description</string>
+    <string name="search">Search</string>
+    <string name="name">Name</string>
+    <string name="tap_here">Tap Here!</string>
+    <string name="get_random_meal">Get Random Meal!</string>
+
+</resources>

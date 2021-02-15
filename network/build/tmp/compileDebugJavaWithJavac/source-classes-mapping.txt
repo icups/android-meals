@@ -1,0 +1,14 @@
+com/meals/dao/HeaderDao_Impl.java
+ com.meals.dao.HeaderDao_Impl
+ com.meals.dao.HeaderDao_Impl$1
+ com.meals.dao.HeaderDao_Impl$2
+ com.meals.dao.HeaderDao_Impl$3
+ com.meals.dao.HeaderDao_Impl$4
+ com.meals.dao.HeaderDao_Impl$5
+ com.meals.dao.HeaderDao_Impl$6
+ com.meals.dao.HeaderDao_Impl$7
+com/meals/repository/BuildConfig.java
+ com.meals.repository.BuildConfig
+com/meals/database/UserDatabase_Impl.java
+ com.meals.database.UserDatabase_Impl
+ com.meals.database.UserDatabase_Impl$1

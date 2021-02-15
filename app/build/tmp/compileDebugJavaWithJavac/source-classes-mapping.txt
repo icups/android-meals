@@ -1,0 +1,29 @@
+androidx/databinding/DataBinderMapperImpl.java
+ androidx.databinding.DataBinderMapperImpl
+com/meals/app/BuildConfig.java
+ com.meals.app.BuildConfig
+androidx/databinding/library/baseAdapters/BR.java
+ androidx.databinding.library.baseAdapters.BR
+com/meals/app/BR.java
+ com.meals.app.BR
+com/meals/app/databinding/ActivitySplashBinding.java
+ com.meals.app.databinding.ActivitySplashBinding
+com/meals/app/DataBindingTriggerClass.java
+ com.meals.app.DataBindingTriggerClass
+com/meals/app/databinding/ActivityMainBinding.java
+ com.meals.app.databinding.ActivityMainBinding
+com/meals/app/DataBinderMapperImpl.java
+ com.meals.app.DataBinderMapperImpl
+ com.meals.app.DataBinderMapperImpl$InnerBrLookup
+ com.meals.app.DataBinderMapperImpl$InnerLayoutIdLookup
+com/meals/app/databinding/ActivityMainBindingImpl.java
+ com.meals.app.databinding.ActivityMainBindingImpl
+com/meals/app/generated/callback/OnClickListener.java
+ com.meals.app.generated.callback.OnClickListener
+ com.meals.app.generated.callback.OnClickListener$Listener
+com/meals/app/databinding/ItemMealBinding.java
+ com.meals.app.databinding.ItemMealBinding
+androidx/databinding/DataBindingComponent.java
+ androidx.databinding.DataBindingComponent
+com/meals/app/databinding/ItemMealBindingImpl.java
+ com.meals.app.databinding.ItemMealBindingImpl

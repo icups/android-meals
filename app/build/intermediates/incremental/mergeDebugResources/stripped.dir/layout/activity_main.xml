@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+                                                       
+                                                   
+
+    
+
+                                           
+
+                                                                    
+
+                 
+                     
+                                                         
+
+                 
+                       
+                                          
+
+           
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimary"
+        android:orientation="vertical" android:tag="layout/activity_main_0" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?android:attr/actionBarSize"
+            android:background="@color/colorPrimaryDark"
+            android:gravity="center_vertical"
+            app:layout_collapseMode="pin"
+            app:layout_scrollFlags="noScroll">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:padding="4dp"
+                app:srcCompat="@drawable/ic_svg_meal" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:text="@string/app_name"
+                android:textColor="@color/colorBlack"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+        </androidx.appcompat.widget.Toolbar>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="24dp"
+            android:text="@string/get_random_meal"
+            android:textSize="24sp" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:orientation="vertical"
+                android:paddingHorizontal="24dp"
+                android:paddingVertical="16dp"
+                android:visibility="gone"                                                                       
+                android:weightSum="10"
+                tools:visibility="visible" android:tag="binding_1">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="7"
+                    android:adjustViewBounds="true"
+                    android:tag="binding_2"          
+                    tools:src="@drawable/ic_svg_github" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:tag="binding_3"    
+                    android:textColor="@color/colorBlack"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    tools:text="Title" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_weight="3"
+                    android:ellipsize="end"
+                    android:scrollbars="vertical"
+                    android:tag="binding_4"           
+                    android:textColor="@color/colorBlack"
+                    android:textSize="12sp"
+                    tools:text="Lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet." />
+
+            </LinearLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/colorPrimary"
+                android:visibility="gone"                                                                          android:tag="binding_5">
+
+                <ProgressBar
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:indeterminateTint="@color/colorWhite" />
+
+            </FrameLayout>
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/colorPrimary"
+                android:visibility="gone"                                                                       
+                app:lottie_autoPlay="true"
+                app:lottie_fileName="not_found.json"
+                app:lottie_loop="true"  android:tag="binding_6"/>
+
+        </FrameLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            style="@style/AppTheme.TextAppearance.Item.Clickable"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="24dp"
+            android:background="@color/colorPrimaryDark"
+            android:enabled="false"                                                           
+            android:tag="binding_7"                          
+            android:text="@string/tap_here"
+            android:textColor="@color/colorBlack" />
+
+    </LinearLayout>
+
+         
