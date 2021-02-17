@@ -276,6 +276,10 @@
         "source": "C:\\Users\\Yusuf Maulana\\AndroidStudioProjects\\android-meals\\app\\src\\main\\res\\drawable\\bg_brown_circle.xml"
     },
     {
+        "merged": "C:\\Users\\Yusuf Maulana\\AndroidStudioProjects\\android-meals\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_meal_detail.xml.flat",
+        "source": "C:\\Users\\Yusuf Maulana\\AndroidStudioProjects\\android-meals\\app\\src\\main\\res\\layout\\activity_meal_detail.xml"
+    },
+    {
         "merged": "C:\\Users\\Yusuf Maulana\\AndroidStudioProjects\\android-meals\\app\\build\\intermediates\\res\\merged\\debug\\anim_slide_down.xml.flat",
         "source": "C:\\Users\\Yusuf Maulana\\AndroidStudioProjects\\android-meals\\app\\src\\main\\res\\anim\\slide_down.xml"
     },

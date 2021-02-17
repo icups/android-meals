@@ -79,6 +79,12 @@
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustPan" />
         <activity
+            android:name="com.meals.app.ui.meal.detail.MealDetailActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
             android:name="com.chuckerteam.chucker.internal.ui.MainActivity"
             android:label="@string/chucker_name"
             android:launchMode="singleTask"

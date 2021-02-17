@@ -1,3 +1,5 @@
+com/meals/app/databinding/ActivityMealDetailBinding.java
+ com.meals.app.databinding.ActivityMealDetailBinding
 androidx/databinding/DataBinderMapperImpl.java
  androidx.databinding.DataBinderMapperImpl
 com/meals/app/BuildConfig.java
@@ -10,6 +12,8 @@ com/meals/app/databinding/ActivitySplashBinding.java
  com.meals.app.databinding.ActivitySplashBinding
 com/meals/app/DataBindingTriggerClass.java
  com.meals.app.DataBindingTriggerClass
+com/meals/app/databinding/ActivityMealDetailBindingImpl.java
+ com.meals.app.databinding.ActivityMealDetailBindingImpl
 com/meals/app/databinding/ActivityMainBinding.java
  com.meals.app.databinding.ActivityMainBinding
 com/meals/app/DataBinderMapperImpl.java

@@ -7,6 +7,7 @@ import androidx.databinding.DataBinderMapper;
 import androidx.databinding.DataBindingComponent;
 import androidx.databinding.ViewDataBinding;
 import com.meals.app.databinding.ActivityMainBindingImpl;
+import com.meals.app.databinding.ActivityMealDetailBindingImpl;
 import com.meals.app.databinding.ItemMealBindingImpl;
 import java.lang.IllegalArgumentException;
 import java.lang.Integer;
@@ -21,12 +22,15 @@ import java.util.List;
 public class DataBinderMapperImpl extends DataBinderMapper {
   private static final int LAYOUT_ACTIVITYMAIN = 1;
 
-  private static final int LAYOUT_ITEMMEAL = 2;
+  private static final int LAYOUT_ACTIVITYMEALDETAIL = 2;
 
-  private static final SparseIntArray INTERNAL_LAYOUT_ID_LOOKUP = new SparseIntArray(2);
+  private static final int LAYOUT_ITEMMEAL = 3;
+
+  private static final SparseIntArray INTERNAL_LAYOUT_ID_LOOKUP = new SparseIntArray(3);
 
   static {
     INTERNAL_LAYOUT_ID_LOOKUP.put(com.meals.app.R.layout.activity_main, LAYOUT_ACTIVITYMAIN);
+    INTERNAL_LAYOUT_ID_LOOKUP.put(com.meals.app.R.layout.activity_meal_detail, LAYOUT_ACTIVITYMEALDETAIL);
     INTERNAL_LAYOUT_ID_LOOKUP.put(com.meals.app.R.layout.item_meal, LAYOUT_ITEMMEAL);
   }
 
@@ -44,6 +48,12 @@ public class DataBinderMapperImpl extends DataBinderMapper {
             return new ActivityMainBindingImpl(component, view);
           }
           throw new IllegalArgumentException("The tag for activity_main is invalid. Received: " + tag);
+        }
+        case  LAYOUT_ACTIVITYMEALDETAIL: {
+          if ("layout/activity_meal_detail_0".equals(tag)) {
+            return new ActivityMealDetailBindingImpl(component, view);
+          }
+          throw new IllegalArgumentException("The tag for activity_meal_detail is invalid. Received: " + tag);
         }
         case  LAYOUT_ITEMMEAL: {
           if ("layout/item_meal_0".equals(tag)) {
@@ -106,10 +116,11 @@ public class DataBinderMapperImpl extends DataBinderMapper {
   }
 
   private static class InnerLayoutIdLookup {
-    static final HashMap<String, Integer> sKeys = new HashMap<String, Integer>(2);
+    static final HashMap<String, Integer> sKeys = new HashMap<String, Integer>(3);
 
     static {
       sKeys.put("layout/activity_main_0", com.meals.app.R.layout.activity_main);
+      sKeys.put("layout/activity_meal_detail_0", com.meals.app.R.layout.activity_meal_detail);
       sKeys.put("layout/item_meal_0", com.meals.app.R.layout.item_meal);
     }
   }

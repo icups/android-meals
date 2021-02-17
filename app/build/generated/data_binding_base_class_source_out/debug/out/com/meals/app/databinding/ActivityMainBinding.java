@@ -10,32 +10,37 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.databinding.Bindable;
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
+import androidx.recyclerview.widget.RecyclerView;
 import com.meals.app.R;
-import com.meals.app.ui.main.MainViewModel;
+import com.meals.app.ui.main.MealViewModel;
 import com.meals.model.Meal;
 import java.lang.Deprecated;
 import java.lang.Object;
 
 public abstract class ActivityMainBinding extends ViewDataBinding {
   @NonNull
+  public final RecyclerView recyclerMeal;
+
+  @NonNull
   public final Toolbar toolbar;
 
   @Bindable
-  protected MainViewModel mVm;
+  protected MealViewModel mVm;
 
   @Bindable
   protected Meal mItem;
 
   protected ActivityMainBinding(Object _bindingComponent, View _root, int _localFieldCount,
-      Toolbar toolbar) {
+      RecyclerView recyclerMeal, Toolbar toolbar) {
     super(_bindingComponent, _root, _localFieldCount);
+    this.recyclerMeal = recyclerMeal;
     this.toolbar = toolbar;
   }
 
-  public abstract void setVm(@Nullable MainViewModel vm);
+  public abstract void setVm(@Nullable MealViewModel vm);
 
   @Nullable
-  public MainViewModel getVm() {
+  public MealViewModel getVm() {
     return mVm;
   }
 
