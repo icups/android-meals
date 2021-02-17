@@ -1,11 +1,13 @@
 package com.meals.response
 
 import com.squareup.moshi.Json
+import com.squareup.moshi.JsonClass
 import java.io.Serializable
 
-data class BaseResponse<T>(
+@JsonClass(generateAdapter = true)
+data class Response<T>(
     val page: Int = 0,
     @Json(name = "total_results") val totalResult: Int = 0,
     @Json(name = "total_pages") val totalPages: Int = 0,
-    @Json(name = "results") val result: T
+    @Json(name = "meals") val result: T
 ) : Serializable
