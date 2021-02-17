@@ -6,16 +6,16 @@ import com.meals.app.R
 import com.meals.app.base.BaseActivity
 import com.meals.app.databinding.ActivityMainBinding
 import com.meals.app.ui.dialog.DialogConfirmation
-import com.meals.app.ui.main.MainViewModel.UiRequest
+import com.meals.app.ui.main.MealViewModel.UiRequest
+import com.meals.app.ui.meal.MealAdapter
+import com.meals.app.ui.meal.detail.MealDetailActivity
 import com.meals.ext.alert.showLongToast
 import com.meals.ext.common.exitFromApps
 import com.meals.ext.vm.observe
-import com.meals.model.Meal
 import com.meals.model.State
-import com.meals.repository.BuildConfig
 import java.util.*
 
-class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>(MainViewModel::class.java) {
+class MainActivity : BaseActivity<MealViewModel, ActivityMainBinding>(MealViewModel::class.java) {
 
     companion object {
         @JvmStatic
@@ -29,6 +29,8 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>(MainViewMo
 
     // -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
+    private lateinit var adapter: MealAdapter
+
     override fun onViewCreated() {
         binding.apply {
             lifecycleOwner = this@MainActivity
@@ -39,29 +41,33 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>(MainViewMo
     // -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
     override fun initAPI() {
-        viewModel.fetchRandomMeals(BuildConfig.API_KEY)
+        viewModel.fetchRandomMeals()
+    }
+
+    override fun setupAdapter() {
+        adapter = MealAdapter(viewModel)
+        binding.recyclerMeal.adapter = adapter
     }
 
     override fun setupObserver() {
         viewModel.run {
             observe(uiRequest) {
-                when (it) {
-                    UiRequest.GET_RANDOM -> fetchRandomMeals(BuildConfig.API_KEY)
-                    else -> return@observe
+                when (it.first) {
+                    UiRequest.DETAIL_MEAL -> goToDetails(it.second.id)
                 }
             }
 
             observe(meals) { result ->
                 when (result) {
-                    is State.Success -> assignMeal(result.data.firstOrNull())
+                    is State.Success -> adapter.replaceAll(result.data)
                     is State.Failure -> showLongToast(result.message)
                 }
             }
         }
     }
 
-    private fun assignMeal(data: Meal?) {
-        binding.item = data
+    private fun goToDetails(id: Long?) {
+        MealDetailActivity.start(this@MainActivity, id)
     }
 
     // -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --

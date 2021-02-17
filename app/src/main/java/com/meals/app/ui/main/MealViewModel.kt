@@ -10,13 +10,15 @@ import com.meals.model.State
 import kotlinx.coroutines.launch
 import java.net.UnknownHostException
 
-class MainViewModel(private val repository: MealRepository) : ViewModel() {
+class MealViewModel(private val repository: MealRepository) : ViewModel() {
 
-    enum class UiRequest { GET_RANDOM, DETAIL_MEAL }
+    enum class UiRequest { DETAIL_MEAL }
     enum class UiMode { INITIATE, ON_PROGRESS, NOT_FOUND, SUCCESS, ERROR }
 
-    private val mUiRequest = MutableLiveData<UiRequest>()
-    val uiRequest: LiveData<UiRequest> = mUiRequest
+    data class Parcel(val id: Long? = null)
+
+    private val mUiRequest = MutableLiveData<Pair<UiRequest, Parcel>>()
+    val uiRequest: LiveData<Pair<UiRequest, Parcel>> = mUiRequest
 
     private val mUiMode = MutableLiveData(UiMode.INITIATE)
     val uiMode: LiveData<UiMode> = mUiMode
@@ -26,11 +28,11 @@ class MainViewModel(private val repository: MealRepository) : ViewModel() {
 
     // -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
-    fun fetchRandomMeals(apiKey: String) {
+    fun fetchRandomMeals() {
         viewModelScope.launch {
             mUiMode.postValue(UiMode.ON_PROGRESS)
             try {
-                repository.randomMeals(apiKey).run {
+                repository.randomMeals().run {
                     mMeals.postValue(State.Success(result))
                     mUiMode.postValue(UiMode.SUCCESS)
                 }
@@ -40,14 +42,34 @@ class MainViewModel(private val repository: MealRepository) : ViewModel() {
                     else -> State.Failure(e.message)
                 })
                 mUiMode.postValue(UiMode.ERROR)
+                e.printStackTrace()
+            }
+        }
+    }
+
+    fun fetchMealDetail(id: String) {
+        viewModelScope.launch {
+            mUiMode.postValue(UiMode.ON_PROGRESS)
+            try {
+                repository.mealDetail(id).run {
+                    mMeals.postValue(State.Success(result))
+                    mUiMode.postValue(UiMode.SUCCESS)
+                }
+            } catch (e: Exception) {
+                mMeals.postValue(when (e) {
+                    is UnknownHostException -> State.Failure("Please check your internet connection and try again.")
+                    else -> State.Failure(e.message)
+                })
+                mUiMode.postValue(UiMode.ERROR)
+                e.printStackTrace()
             }
         }
     }
 
     // -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
-    fun clickGetRandomMeal() {
-        mUiRequest.postValue(UiRequest.GET_RANDOM)
+    fun clickDetailMeal(data: Long) {
+        mUiRequest.postValue(UiRequest.DETAIL_MEAL to Parcel(id = data))
     }
 
 }

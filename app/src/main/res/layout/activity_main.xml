@@ -7,11 +7,11 @@
 
         <import type="android.view.View" />
 
-        <import type="com.meals.app.ui.main.MainViewModel.UiMode" />
+        <import type="com.meals.app.ui.main.MealViewModel.UiMode" />
 
         <variable
             name="vm"
-            type="com.meals.app.ui.main.MainViewModel" />
+            type="com.meals.app.ui.main.MealViewModel" />
 
         <variable
             name="item"
@@ -30,9 +30,7 @@
             android:layout_width="match_parent"
             android:layout_height="?android:attr/actionBarSize"
             android:background="@color/colorPrimaryDark"
-            android:gravity="center_vertical"
-            app:layout_collapseMode="pin"
-            app:layout_scrollFlags="noScroll">
+            android:gravity="center_vertical">
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:layout_width="40dp"
@@ -52,97 +50,31 @@
 
         </androidx.appcompat.widget.Toolbar>
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="24dp"
-            android:text="@string/get_random_meal"
-            android:textSize="24sp" />
-
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1">
+            android:layout_height="match_parent"
+            android:background="@color/colorPrimary"
+            android:visibility="@{vm.uiMode == UiMode.ON_PROGRESS ? View.VISIBLE : View.GONE, default=`gone`}">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:orientation="vertical"
-                android:paddingHorizontal="24dp"
-                android:paddingVertical="16dp"
-                android:visibility="@{vm.uiMode == UiMode.NOT_FOUND ? View.GONE : View.VISIBLE, default=`gone`}"
-                android:weightSum="10"
-                tools:visibility="visible">
-
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="7"
-                    android:adjustViewBounds="true"
-                    app:loadImage="@{item.thumbnail}"
-                    tools:src="@drawable/ic_svg_github" />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
-                    android:text="@{item.name}"
-                    android:textColor="@color/colorBlack"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    tools:text="Title" />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_marginTop="4dp"
-                    android:layout_weight="3"
-                    android:ellipsize="end"
-                    android:scrollbars="vertical"
-                    android:text="@{item.instruction}"
-                    android:textColor="@color/colorBlack"
-                    android:textSize="12sp"
-                    tools:text="Lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet." />
-
-            </LinearLayout>
-
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/colorPrimary"
-                android:visibility="@{vm.uiMode == UiMode.ON_PROGRESS ? View.VISIBLE : View.GONE, default=`gone`}">
-
-                <ProgressBar
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:indeterminateTint="@color/colorWhite" />
-
-            </FrameLayout>
-
-            <com.airbnb.lottie.LottieAnimationView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/colorPrimary"
-                android:visibility="@{vm.uiMode == UiMode.NOT_FOUND ? View.VISIBLE : View.GONE, default=`gone`}"
-                app:lottie_autoPlay="true"
-                app:lottie_fileName="not_found.json"
-                app:lottie_loop="true" />
+                android:indeterminateTint="@color/colorWhite" />
 
         </FrameLayout>
 
-        <androidx.appcompat.widget.AppCompatButton
-            style="@style/AppTheme.TextAppearance.Item.Clickable"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_meal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="24dp"
-            android:background="@color/colorPrimaryDark"
-            android:enabled="@{vm.uiMode == UiMode.ON_PROGRESS ? false : true, default=false}"
-            android:onClick="@{()-> vm.clickGetRandomMeal()}"
-            android:text="@string/tap_here"
-            android:textColor="@color/colorBlack" />
+            android:clipToPadding="false"
+            android:orientation="vertical"
+            android:paddingVertical="8dp"
+            android:visibility="@{vm.uiMode == UiMode.NOT_FOUND ? View.GONE : View.VISIBLE, default=`gone`}"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/item_meal"
+            tools:visibility="visible" />
 
     </LinearLayout>
 
