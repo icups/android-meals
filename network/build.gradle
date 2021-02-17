@@ -18,13 +18,13 @@ android {
 
     buildTypes {
         debug {
-            buildConfigField "String", "API_KEY", "\"1\""
-            buildConfigField "String", "URL_API", "\"https://www.themealdb.com/api/json/v1/\""
+            buildConfigField "String", "API_KEY", "\"9973533\""
+            buildConfigField "String", "URL_API", "\"https://www.themealdb.com/api/json/v2/\""
         }
 
         release {
-            buildConfigField "String", "API_KEY", "\"1\""
-            buildConfigField "String", "URL_API", "\"https://www.themealdb.com/api/json/v1/\""
+            buildConfigField "String", "API_KEY", "\"9973533\""
+            buildConfigField "String", "URL_API", "\"https://www.themealdb.com/api/json/v2/\""
         }
     }
 }
